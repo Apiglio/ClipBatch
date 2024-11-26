@@ -1,0 +1,205 @@
+object Form_Clip_Batch: TForm_Clip_Batch
+  Left = 1017
+  Height = 566
+  Top = 511
+  Width = 840
+  AllowDropFiles = True
+  Caption = 'Form_Clip_Batch'
+  ClientHeight = 536
+  ClientWidth = 840
+  DesignTimePPI = 144
+  Menu = MainMenu
+  OnCreate = FormCreate
+  OnDropFiles = FormDropFiles
+  Position = poDefault
+  LCLVersion = '1.8.4.0'
+  object ListBox_filenames: TListBox
+    AnchorSideLeft.Control = SplitterV
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Button_transpose
+    Left = 568
+    Height = 493
+    Top = 0
+    Width = 272
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ItemHeight = 0
+    OnClick = ListBox_filenamesClick
+    TabOrder = 0
+  end
+  object Panel_show: TPanel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = SplitterV
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 536
+    Top = 0
+    Width = 560
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ClientHeight = 536
+    ClientWidth = 560
+    TabOrder = 1
+    OnResize = Panel_showResize
+    object Image_show: TImage
+      AnchorSideLeft.Control = Panel_show
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Panel_show
+      AnchorSideTop.Side = asrCenter
+      AnchorSideRight.Side = asrCenter
+      AnchorSideBottom.Control = Panel_show
+      AnchorSideBottom.Side = asrCenter
+      Left = 117
+      Height = 322
+      Top = 107
+      Width = 326
+      Proportional = True
+      Stretch = True
+    end
+    object Shape_select: TShape
+      Left = 212
+      Height = 136
+      Top = 196
+      Width = 136
+      Anchors = []
+      Brush.Color = clNone
+      Brush.Style = bsClear
+      Constraints.MinHeight = 25
+      Constraints.MinWidth = 25
+      Pen.Color = clRed
+      Pen.Width = 2
+      OnMouseDown = Shape_selectMouseDown
+      OnMouseMove = Shape_selectMouseMove
+      OnMouseUp = Shape_selectMouseUp
+    end
+  end
+  object SplitterV: TSplitter
+    AnchorSideTop.Control = Owner
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 560
+    Height = 536
+    Top = 0
+    Width = 8
+    Align = alNone
+    Anchors = [akTop, akBottom]
+  end
+  object Button_transpose: TButton
+    AnchorSideLeft.Control = SplitterV
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideRight.Control = ListBox_filenames
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 568
+    Height = 43
+    Top = 493
+    Width = 272
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = '裁切框转置'
+    OnClick = Button_transposeClick
+    TabOrder = 3
+  end
+  object MainMenu: TMainMenu
+    left = 488
+    top = 96
+    object MenuItem_open: TMenuItem
+      Caption = '打开'
+      object MenuItem_openDir: TMenuItem
+        Caption = '打开目录'
+        OnClick = MenuItem_openDirClick
+      end
+      object MenuItem_openFiles: TMenuItem
+        Caption = '打开文件'
+        OnClick = MenuItem_openFilesClick
+      end
+    end
+    object MenuItem_tool: TMenuItem
+      Caption = '工具'
+      object MenuItem_selection: TMenuItem
+        Caption = '裁切框设置'
+        object MenuItem_selection_proportional: TMenuItem
+          Caption = '锁定长宽比'
+          Checked = True
+          OnClick = MenuItem_selection_proportionalClick
+        end
+        object MenuItem_selection_border: TMenuItem
+          Caption = '宽边界判定'
+          Checked = True
+          OnClick = MenuItem_selection_borderClick
+        end
+        object MenuItem_selection_autotranspose: TMenuItem
+          Caption = '自适应转置'
+          Checked = True
+          OnClick = MenuItem_selection_autotransposeClick
+        end
+      end
+      object MenuItem_selection_ratio: TMenuItem
+        Caption = '裁切框比例'
+        object MenuItem_selection_ratio_11: TMenuItem
+          Caption = '1:1'
+          Checked = True
+          OnClick = MenuItem_selection_ratio_11Click
+        end
+        object MenuItem_selection_ratio_43: TMenuItem
+          Caption = '4:3'
+          OnClick = MenuItem_selection_ratio_43Click
+        end
+        object MenuItem_selection_ratio_169: TMenuItem
+          Caption = '16:9'
+          OnClick = MenuItem_selection_ratio_169Click
+        end
+        object MenuItem_selection_ratio_2351: TMenuItem
+          Caption = '2.35:1'
+          OnClick = MenuItem_selection_ratio_2351Click
+        end
+        object MenuItem_selection_ratio_32: TMenuItem
+          Caption = '3:2'
+          OnClick = MenuItem_selection_ratio_32Click
+        end
+        object MenuItem_selection_ratio_107: TMenuItem
+          Caption = '10:7'
+          OnClick = MenuItem_selection_ratio_107Click
+        end
+        object MenuItem_selection_ratio_75: TMenuItem
+          Caption = '7:5'
+          OnClick = MenuItem_selection_ratio_75Click
+        end
+        object MenuItem_selection_ratio_65: TMenuItem
+          Caption = '6:5'
+          OnClick = MenuItem_selection_ratio_65Click
+        end
+        object MenuItem_selection_ratio_54: TMenuItem
+          Caption = '5:4'
+          OnClick = MenuItem_selection_ratio_54Click
+        end
+        object MenuItem_selection_ratio_customize: TMenuItem
+          Caption = '自定比例'
+          OnClick = MenuItem_selection_ratio_customizeClick
+        end
+      end
+      object MenuItem_tool_div_01: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem_about: TMenuItem
+        Caption = '关于'
+        OnClick = MenuItem_aboutClick
+      end
+    end
+  end
+  object SelectDirectoryDialog1: TSelectDirectoryDialog
+    Title = '打开目录'
+    Options = [ofEnableSizing]
+    left = 488
+    top = 32
+  end
+  object OpenDialog1: TOpenDialog
+    Title = '打开文件'
+    Options = [ofAllowMultiSelect, ofEnableSizing]
+    left = 488
+    top = 176
+  end
+end
